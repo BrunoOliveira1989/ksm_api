@@ -9,6 +9,6 @@ export const authenticate = async (
 
     request.user = decoded
   } catch (erro) {
-    return reply.code(401).send({ error: 'Usuário não autenticado' })
+    reply.code(401).send({ message: 'Usuário não autenticado' })
   }
 }

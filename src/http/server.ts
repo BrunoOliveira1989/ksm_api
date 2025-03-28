@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 
 import { fastifyCookie } from '@fastify/cookie'
+import fastifyCors from '@fastify/cors'
 import { fastifyJwt } from '@fastify/jwt'
 import { fastifySwagger } from '@fastify/swagger'
 import { fastifySwaggerUi } from '@fastify/swagger-ui'
@@ -22,6 +23,10 @@ const app = fastify().withTypeProvider<ZodTypeProvider>()
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
+app.register(fastifyCors, {
+  origin: true,
+})
+
 app.register(fastifyJwt, {
   secret: env.SECRET,
   cookie: {
@@ -42,6 +47,16 @@ app.register(fastifySwagger, {
       description:
         'Especificações da API para o backend da aplicação Kodiak Sales Manager',
       version: '1.0.0',
+    },
+    components: {
+      securitySchemes: {
+        CookieAuth: {
+          type: 'apiKey',
+          in: 'cookie',
+          name: 'token',
+          description: 'JWToken in HTTP-Only cookie',
+        },
+      },
     },
   },
   transform: jsonSchemaTransform,
