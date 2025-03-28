@@ -10,6 +10,8 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 
+import { sql } from 'drizzle-orm'
+import { db } from '../db/client'
 import { env } from '../env'
 import { router } from './routes/router'
 
@@ -36,8 +38,14 @@ app.register(fastifySwaggerUi, {
 
 app.register(router)
 
-app.listen({ port: env.PORT, host: '0.0.0.0' }).then(() => {
-  console.log(chalk.greenBright('✅ HTTP server is running!'))
-  console.log(chalk.blue(`🌐 Url: ${env.BASE_URL}:${env.PORT}`))
-  console.log(chalk.bold(`📄 Documentation: ${env.BASE_URL}:${env.PORT}/docs`))
+app.listen({ port: env.PORT, host: '0.0.0.0' }).then(async () => {
+  await db.execute(sql`SELECT 1`).then(() => {
+    console.log(chalk.greenBright('✅ Database connected'))
+  })
+
+  console.log(chalk.yellowBright('🔥 HTTP server is running!'))
+  console.log(chalk.blueBright(`🌐 Url: ${env.BASE_URL}:${env.PORT}`))
+  console.log(
+    chalk.whiteBright(`📄 Documentation: ${env.BASE_URL}:${env.PORT}/docs`)
+  )
 })
