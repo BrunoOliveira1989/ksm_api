@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --env-file .env src/http/server.ts"
+    "dev": "tsx watch --env-file .env src/http/server.ts",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "seed": "tsx --env-file .env src/db/seed.ts"
   },
   "keywords": [],
   "author": "",
