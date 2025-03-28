@@ -13,7 +13,6 @@ export const users = pgTable('users', {
   companyId: text('id_company')
     .notNull()
     .references(() => companies.id),
-  tradeName: text('trade_name').notNull(),
   email: text('email').unique().notNull(),
   password: text('password').notNull(),
   role: userRole('role').default('vendedor').notNull(),

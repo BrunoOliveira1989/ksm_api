@@ -51,7 +51,7 @@ export const loginRoute: FastifyPluginAsyncZod = async app => {
 
       const token = app.jwt.sign({ userId: userData.id })
 
-      const { password: __, ...user } = userData
+      const { password: __, company, ...user } = userData
 
       return reply
         .status(200)
@@ -61,7 +61,12 @@ export const loginRoute: FastifyPluginAsyncZod = async app => {
           path: '/',
           maxAge: 3600 * 8,
         })
-        .send({ user })
+        .send({
+          user: {
+            ...user,
+            tradeName: company.tradeName,
+          },
+        })
     }
   )
 }
