@@ -1,6 +1,6 @@
 import { relations } from 'drizzle-orm'
 import { integer, pgTable, text } from 'drizzle-orm/pg-core'
-import { accountsReceivable, customersGroups } from '.'
+import { accountsReceivable, customerGroups } from '.'
 
 export const customers = pgTable('customers', {
   id: integer('id').primaryKey(),
@@ -10,14 +10,14 @@ export const customers = pgTable('customers', {
   state: text('state').notNull(),
   groupId: integer('group_id')
     .notNull()
-    .references(() => customersGroups.id),
+    .references(() => customerGroups.id),
 })
 
 export const customersRelations = relations(customers, ({ one, many }) => {
   return {
-    group: one(customersGroups, {
+    group: one(customerGroups, {
       fields: [customers.groupId],
-      references: [customersGroups.id],
+      references: [customerGroups.id],
       relationName: 'customer_group',
     }),
     accounts: many(accountsReceivable),

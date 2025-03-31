@@ -22,7 +22,7 @@ export const getAllCustomersRoute: FastifyPluginAsyncZod = async app => {
               })
             ),
           }),
-          204: z.undefined(),
+          204: z.null(),
         },
         security: [{ CookieAuth: [] }],
       },
