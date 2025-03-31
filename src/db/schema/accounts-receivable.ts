@@ -1,21 +1,32 @@
+import { relations } from 'drizzle-orm'
 import { date, decimal, integer, pgTable, text } from 'drizzle-orm/pg-core'
+import { customers } from '.'
 
 export const accountsReceivable = pgTable('accounts_receivable', {
   id: integer('id').primaryKey(),
-  document: text('document'),
-  title: integer('title'),
-  installments: integer('installments'),
-  customerId: integer('customer_id'),
-  companyName: text('company_name'),
-  tradeName: text('trade_name'),
-  customerGroupId: integer('customer_group_id'),
-  customerGroupDescription: text('customer_group_description'),
-  city: text('city'),
-  state: text('state'),
-  titleValue: decimal('title_value'),
-  receivedValue: decimal('received_value'),
-  balanceValue: decimal('balance_value'),
-  issueDate: date('issue_date'),
-  entryDate: date('entry_date'),
-  dueDate: date('due_date'),
+  document: text('document').notNull(),
+  title: integer('title').notNull(),
+  installments: integer('installments').notNull(),
+  customerId: integer('customer_id')
+    .notNull()
+    .references(() => customers.id),
+  titleValue: decimal('title_value').notNull(),
+  receivedValue: decimal('received_value').notNull(),
+  balanceValue: decimal('balance_value').notNull(),
+  issueDate: date('issue_date').notNull(),
+  entryDate: date('entry_date').notNull(),
+  dueDate: date('due_date').notNull(),
 })
+
+export const accountsReceivableRelations = relations(
+  accountsReceivable,
+  ({ one }) => {
+    return {
+      customer: one(customers, {
+        fields: [accountsReceivable.customerId],
+        references: [customers.id],
+        relationName: 'customer_accounts',
+      }),
+    }
+  }
+)

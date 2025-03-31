@@ -78,6 +78,20 @@
       "when": 1743429597967,
       "tag": "0010_sturdy_xavin",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1743430200661,
+      "tag": "0011_icy_harpoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1743430330927,
+      "tag": "0012_chemical_vermin",
+      "breakpoints": true
     }
   ]
 }
