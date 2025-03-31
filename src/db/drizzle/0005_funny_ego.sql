@@ -1,0 +1,20 @@
+CREATE TABLE "sales" (
+	"id" integer PRIMARY KEY NOT NULL,
+	"issue_date" date,
+	"type" integer,
+	"type_description" text,
+	"customer_id" integer,
+	"company_name" text,
+	"trade_name" text,
+	"customer_group_id" integer,
+	"customer_group_description" text,
+	"city" text,
+	"state" text,
+	"product_id" text,
+	"product_description" text,
+	"product_group_id" integer,
+	"product_group_description" text,
+	"quantity" numeric,
+	"unit_value" numeric,
+	"total" numeric
+);
