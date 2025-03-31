@@ -2,9 +2,13 @@ import { db } from '../../db/client'
 
 interface GetAllCustomersParams {
   groupId?: number
+  page: number
 }
 
-export const getAllCustomers = async ({ groupId }: GetAllCustomersParams) => {
+export const getAllCustomers = async ({
+  groupId,
+  page,
+}: GetAllCustomersParams) => {
   const customers = await db.query.customers.findMany({
     columns: {
       id: true,
@@ -15,6 +19,8 @@ export const getAllCustomers = async ({ groupId }: GetAllCustomersParams) => {
         return eq(fields.groupId, groupId)
       }
     },
+    offset: (page - 1) * 10,
+    limit: 10,
   })
 
   return { customers }
