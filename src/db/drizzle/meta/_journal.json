@@ -57,6 +57,13 @@
       "when": 1743428503278,
       "tag": "0007_sloppy_dark_phoenix",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1743428909049,
+      "tag": "0008_redundant_yellow_claw",
+      "breakpoints": true
     }
   ]
 }
