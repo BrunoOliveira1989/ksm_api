@@ -43,6 +43,13 @@
       "when": 1743425527374,
       "tag": "0005_funny_ego",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1743426838883,
+      "tag": "0006_cold_loners",
+      "breakpoints": true
     }
   ]
 }
