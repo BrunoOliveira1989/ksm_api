@@ -3,6 +3,7 @@ import { authRoutes } from './auth/auth-routes'
 import { companiesRoutes } from './companies/companies-routes'
 import { customersRoutes } from './customers/customers-routes'
 import { healthCheck } from './health-check'
+import { productsRoutes } from './products/products-routes'
 import { usersRoutes } from './users/users-routes'
 
 export const router: FastifyPluginAsyncZod = async app => {
@@ -11,4 +12,5 @@ export const router: FastifyPluginAsyncZod = async app => {
   await app.register(usersRoutes, { prefix: '/users' })
   await app.register(companiesRoutes, { prefix: '/companies' })
   await app.register(customersRoutes, { prefix: '/customers' })
+  await app.register(productsRoutes, { prefix: '/products' })
 }
