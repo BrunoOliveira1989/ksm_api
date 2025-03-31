@@ -1,0 +1,1 @@
+ALTER TABLE "sales" ADD CONSTRAINT "sales_type_id_types_id_fk" FOREIGN KEY ("type_id") REFERENCES "public"."types"("id") ON DELETE no action ON UPDATE no action;

@@ -1,22 +1,40 @@
+import { relations } from 'drizzle-orm'
 import { date, decimal, integer, pgTable, text } from 'drizzle-orm/pg-core'
+import { customers, products, types } from '.'
 
 export const sales = pgTable('sales', {
   id: integer('id').primaryKey(),
-  issueDate: date('issue_date'),
-  type: integer('type'),
-  type_description: text('type_description'),
-  customer_id: integer('customer_id'),
-  companyName: text('company_name'),
-  tradeName: text('trade_name'),
-  costumerGroupId: integer('customer_group_id'),
-  customerGroupDescription: text('customer_group_description'),
-  city: text('city'),
-  state: text('state'),
-  productId: text('product_id'),
-  productDescription: text('product_description'),
-  productGroupId: integer('product_group_id'),
-  productGroupDescription: text('product_group_description'),
-  quantity: decimal('quantity'),
-  unitValue: decimal('unit_value'),
-  total: decimal('total'),
+  issueDate: date('issue_date').notNull(),
+  typeId: integer('type_id')
+    .notNull()
+    .references(() => types.id),
+  customerId: integer('customer_id')
+    .notNull()
+    .references(() => customers.id),
+  productId: text('product_id')
+    .notNull()
+    .references(() => products.id),
+  quantity: decimal('quantity').notNull(),
+  unitValue: decimal('unit_value').notNull(),
+  total: decimal('total').notNull(),
+})
+
+export const salesRelations = relations(sales, ({ one }) => {
+  return {
+    customer: one(customers, {
+      fields: [sales.customerId],
+      references: [customers.id],
+      relationName: 'customer_sale',
+    }),
+    product: one(products, {
+      fields: [sales.productId],
+      references: [products.id],
+      relationName: 'product_sale',
+    }),
+    type: one(types, {
+      fields: [sales.typeId],
+      references: [types.id],
+      relationName: 'product_sale',
+    }),
+  }
 })
