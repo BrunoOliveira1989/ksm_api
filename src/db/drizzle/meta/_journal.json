@@ -71,6 +71,13 @@
       "when": 1743429299304,
       "tag": "0009_deep_enchantress",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1743429597967,
+      "tag": "0010_sturdy_xavin",
+      "breakpoints": true
     }
   ]
 }

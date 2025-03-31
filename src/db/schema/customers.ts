@@ -4,11 +4,13 @@ import { customersGroups } from '.'
 
 export const customers = pgTable('customers', {
   id: integer('id').primaryKey(),
-  companyName: text('company_name'),
-  tradeName: text('trade_name'),
-  city: text('city'),
-  state: text('state'),
-  groupId: integer('group_id').references(() => customersGroups.id),
+  companyName: text('company_name').notNull(),
+  tradeName: text('trade_name').notNull(),
+  city: text('city').notNull(),
+  state: text('state').notNull(),
+  groupId: integer('group_id')
+    .notNull()
+    .references(() => customersGroups.id),
 })
 
 export const customersRelations = relations(customers, ({ one }) => {
