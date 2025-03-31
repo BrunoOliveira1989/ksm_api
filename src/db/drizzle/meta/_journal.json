@@ -64,6 +64,13 @@
       "when": 1743428909049,
       "tag": "0008_redundant_yellow_claw",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1743429299304,
+      "tag": "0009_deep_enchantress",
+      "breakpoints": true
     }
   ]
 }
