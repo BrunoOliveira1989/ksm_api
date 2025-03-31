@@ -1,15 +1,15 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { getAllCustomerGroups } from '../../../functions/customers/get-all-customer-groups'
+import { getAllProductGroups } from '../../../functions/products/get-all-product-groups'
 import { authenticate } from '../../../hook/auth-hook'
 
-export const getAllCustomerGroupsRoute: FastifyPluginAsyncZod = async app => {
+export const getAllProductGroupsRoute: FastifyPluginAsyncZod = async app => {
   app.get(
     '/groups',
     {
       schema: {
-        summary: 'Get all customer groups',
-        tags: ['Customers'],
+        summary: 'Get all product groups',
+        tags: ['Products'],
         response: {
           200: z.object({
             groups: z.array(
@@ -19,14 +19,13 @@ export const getAllCustomerGroupsRoute: FastifyPluginAsyncZod = async app => {
               })
             ),
           }),
-          204: z.null(),
         },
         security: [{ CookieAuth: [] }],
       },
       onRequest: [authenticate],
     },
     async (_, reply) => {
-      const { groups } = await getAllCustomerGroups()
+      const { groups } = await getAllProductGroups()
 
       if (!groups.length) {
         return reply.status(204).send()

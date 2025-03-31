@@ -2,12 +2,12 @@ import { relations } from 'drizzle-orm'
 import { integer, pgTable, text } from 'drizzle-orm/pg-core'
 import { products } from '.'
 
-export const productsGroups = pgTable('products_groups', {
+export const productGroups = pgTable('product_groups', {
   id: integer('id').primaryKey(),
   description: text('description').notNull(),
 })
 
-export const productsGroupsRelations = relations(productsGroups, ({ many }) => {
+export const productGroupsRelations = relations(productGroups, ({ many }) => {
   return {
     products: many(products),
   }

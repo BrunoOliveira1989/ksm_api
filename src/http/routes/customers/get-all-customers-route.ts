@@ -12,6 +12,7 @@ export const getAllCustomersRoute: FastifyPluginAsyncZod = async app => {
         tags: ['Customers'],
         querystring: z.object({
           groupId: z.coerce.number().optional(),
+          page: z.coerce.number().default(1),
         }),
         response: {
           200: z.object({
@@ -29,9 +30,9 @@ export const getAllCustomersRoute: FastifyPluginAsyncZod = async app => {
       onRequest: [authenticate],
     },
     async (request, reply) => {
-      const { groupId } = request.query
+      const { groupId, page } = request.query
 
-      const { customers } = await getAllCustomers({ groupId })
+      const { customers } = await getAllCustomers({ groupId, page })
 
       if (!customers.length) {
         return reply.code(204).send()
