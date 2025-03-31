@@ -15,11 +15,7 @@ export const logoutRoute: FastifyPluginAsyncZod = async app => {
             message: z.string(),
           }),
         },
-        security: [
-          {
-            CookieAuth: [],
-          },
-        ],
+        security: [{ CookieAuth: [] }],
       },
       onRequest: [authenticate],
     },
