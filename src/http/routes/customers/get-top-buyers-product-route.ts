@@ -1,6 +1,7 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { getTopBuyersProduct } from '../../../functions/customers/getTopBuyersProduct'
+import { getTopBuyersProduct } from '../../../functions/customers/get-top-buyers-product'
+import { authenticate } from '../../../hook/auth-hook'
 
 export const getTopBuyersProductRoute: FastifyPluginAsyncZod = async app => {
   app.get(
@@ -26,7 +27,9 @@ export const getTopBuyersProductRoute: FastifyPluginAsyncZod = async app => {
           }),
           204: z.null(),
         },
+        security: [{ CookieAuth: [] }],
       },
+      onRequest: [authenticate],
     },
     async (request, reply) => {
       const { id } = request.params
