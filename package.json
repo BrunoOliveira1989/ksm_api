@@ -21,6 +21,7 @@
     "@fastify/swagger-ui": "^5.2.2",
     "@paralleldrive/cuid2": "^2.2.2",
     "bcrypt": "^5.1.1",
+    "dayjs": "^1.11.13",
     "drizzle-orm": "^0.41.0",
     "fastify": "^5.2.2",
     "fastify-type-provider-zod": "^4.0.2",
@@ -45,6 +46,7 @@
     "onlyBuiltDependencies": [
       "@biomejs/biome",
       "bcrypt",
+      "daysjs",
       "esbuild"
     ]
   }
