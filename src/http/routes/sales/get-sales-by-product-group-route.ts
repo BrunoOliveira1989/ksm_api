@@ -9,6 +9,7 @@ export const getSalesByProductGroupRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Get sales grouped by product group',
+        operationId: 'getSalesByProductGroup',
         tags: ['Sales'],
         response: {
           200: z.object({

@@ -7,6 +7,7 @@ export const healthCheck: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Health check from api',
+        operationId: 'healthCheck',
         tags: ['Health check'],
         response: {
           200: z.object({

@@ -10,6 +10,7 @@ export const getSalesByDaysOfTheLastWeekRoute: FastifyPluginAsyncZod =
       {
         schema: {
           summary: 'Sales count by days of the last last 7 days',
+          operationId: 'getSalesByDaysOfTheLastWeek',
           tags: ['Sales'],
           response: {
             200: z.object({

@@ -9,8 +9,8 @@ export const login = async (email: string) => {
         },
       },
     },
-    where(fields, { eq }) {
-      return eq(fields.email, email)
+    where(fields, { like }) {
+      return like(fields.email, email)
     },
   })
 

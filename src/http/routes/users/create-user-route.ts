@@ -11,6 +11,7 @@ export const createUserRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Register a user',
+        operationId: 'createUser',
         tags: ['Users'],
         body: z.object({
           name: z.string(),
@@ -38,8 +39,8 @@ export const createUserRoute: FastifyPluginAsyncZod = async app => {
       const { name, email, password, role, companyId } = request.body
 
       const userExists = await db.query.users.findFirst({
-        where(fields, { eq }) {
-          return eq(fields.email, email)
+        where(fields, { like }) {
+          return like(fields.email, email)
         },
       })
 
@@ -48,8 +49,8 @@ export const createUserRoute: FastifyPluginAsyncZod = async app => {
       }
 
       const companyExists = await db.query.companies.findFirst({
-        where(fields, { eq }) {
-          return eq(fields.id, companyId)
+        where(fields, { like }) {
+          return like(fields.id, companyId)
         },
       })
 

@@ -1,19 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "_version": "20.1.0",
+  "_version": "22.0.0",
 
   "compilerOptions": {
     "lib": ["es2023"],
-    "module": "node16",
+    "module": "nodenext",
     "target": "es2022",
 
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
-
-    "outDir": "./build",
-    "rootDir": "./src"
-  },
-  "include": ["src/**/*"]
+    "moduleResolution": "node16"
+  }
 }

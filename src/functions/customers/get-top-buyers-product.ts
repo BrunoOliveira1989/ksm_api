@@ -9,33 +9,6 @@ interface GetTopBuyersProductParams {
 export const getTopBuyersProduct = async ({
   id,
 }: GetTopBuyersProductParams) => {
-  // const buyers = await db.query.sales.findMany({
-  //   with: {
-  //     customer: {
-  //       columns: {
-  //         companyName: true,
-  //       },
-  //     },
-  //   },
-  //   columns: {
-  //     customerId: true,
-  //   },
-  //   extras: (fields, { sql }) => ({
-  //     totalProductsPurchased: sql<number>`sum(${fields.quantity})`.as(
-  //       'total_products_purchased'
-  //     ),
-  //     totalPurchases: sql<number>`sum(${fields.id})`.as('total_purchases'),
-  //     totalValue: sql<number>`sum(${fields.total})`.as('total_value'),
-  //   }),
-  //   where(fields, { eq }) {
-  //     return eq(fields.productId, id)
-  //   },
-  //   orderBy(_, { desc, sql }) {
-  //     return desc(sql`total_products_purchased`)
-  //   },
-  //   limit: 10,
-  // })
-
   const topBuyers = await db
     .select({
       customerId: sales.customerId,

@@ -9,6 +9,7 @@ export const getTopSellingProductsRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Get top 10 selling products',
+        operationId: 'getTopSellingProducts',
         tags: ['Products'],
         response: {
           200: z.object({

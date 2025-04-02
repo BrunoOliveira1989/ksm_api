@@ -6,8 +6,8 @@ interface GetProductById {
 
 export const getProductById = async ({ id }: GetProductById) => {
   const product = await db.query.products.findFirst({
-    where(fields, { eq }) {
-      return eq(fields.id, id)
+    where(fields, { like }) {
+      return like(fields.id, id)
     },
   })
 

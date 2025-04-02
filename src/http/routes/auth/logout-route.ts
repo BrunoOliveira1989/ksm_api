@@ -8,6 +8,7 @@ export const logoutRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Logout',
+        operationId: 'logout',
         tags: ['Authentication'],
         response: {
           204: z.null(),

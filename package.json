@@ -38,16 +38,7 @@
     "typescript": "^5.8.2"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": [
-      "@biomejs/biome",
-      "bcrypt",
-      "esbuild"
-    ],
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "bcrypt",
-      "daysjs",
-      "esbuild"
-    ]
+    "ignoredBuiltDependencies": ["@biomejs/biome", "bcrypt", "esbuild"],
+    "onlyBuiltDependencies": ["@biomejs/biome", "bcrypt", "daysjs", "esbuild"]
   }
 }

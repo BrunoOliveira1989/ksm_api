@@ -9,6 +9,7 @@ export const loginRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Login',
+        operationId: 'login',
         tags: ['Authentication'],
         body: z.object({
           email: z.string().email(),

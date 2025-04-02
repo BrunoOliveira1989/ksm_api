@@ -9,6 +9,7 @@ export const getAllCustomersRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Get all customers',
+        operationId: 'getAllCustomers',
         tags: ['Customers'],
         querystring: z.object({
           groupId: z.coerce.number().optional(),

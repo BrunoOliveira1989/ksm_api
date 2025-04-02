@@ -1,4 +1,6 @@
+import { eq } from 'drizzle-orm'
 import { db } from '../../db/client'
+import { customers } from '../../db/schema'
 
 interface GetAllCustomersParams {
   groupId?: number
@@ -9,19 +11,17 @@ export const getAllCustomers = async ({
   groupId,
   page,
 }: GetAllCustomersParams) => {
-  const customers = await db.query.customers.findMany({
+  const allCustomers = await db.query.customers.findMany({
     columns: {
       id: true,
       companyName: true,
     },
-    where(fields, { eq }) {
-      if (groupId) {
-        return eq(fields.groupId, groupId)
-      }
+    where: () => {
+      return groupId ? eq(customers.groupId, groupId) : undefined
     },
     offset: (page - 1) * 10,
     limit: 10,
   })
 
-  return { customers }
+  return { customers: allCustomers }
 }

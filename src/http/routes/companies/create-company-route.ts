@@ -9,6 +9,7 @@ export const createCompanyRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Register a company',
+        operationId: 'createCompany',
         tags: ['Companies'],
         body: z.object({
           cnpj: z.string(),

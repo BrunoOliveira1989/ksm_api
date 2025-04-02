@@ -9,6 +9,7 @@ export const getAllCustomerGroupsRoute: FastifyPluginAsyncZod = async app => {
     {
       schema: {
         summary: 'Get all customer groups',
+        operationId: 'getAllCustomerGroups',
         tags: ['Customers'],
         response: {
           200: z.object({
