@@ -28,6 +28,7 @@ export const loginRoute: FastifyPluginAsyncZod = async app => {
               companyId: z.string().cuid2(),
               tradeName: z.string(),
             }),
+            token: z.string().jwt(),
           }),
           404: z.object({
             message: z.string(),
@@ -54,20 +55,27 @@ export const loginRoute: FastifyPluginAsyncZod = async app => {
 
       const { password: __, company, ...user } = userData
 
-      return reply
-        .status(200)
-        .setCookie('token', token, {
-          httpOnly: true,
-          sameSite: 'strict',
-          path: '/',
-          maxAge: 3600 * 8,
-        })
-        .send({
-          user: {
-            ...user,
-            tradeName: company.tradeName,
-          },
-        })
+      return reply.status(200).send({
+        user: {
+          ...user,
+          tradeName: company.tradeName,
+        },
+        token,
+      })
+      // return reply
+      //   .status(200)
+      //   .setCookie('token', token, {
+      //     httpOnly: true,
+      //     sameSite: 'strict',
+      //     path: '/',
+      //     maxAge: 3600 * 8,
+      //   })
+      //   .send({
+      //     user: {
+      //       ...user,
+      //       tradeName: company.tradeName,
+      //     },
+      //   })
     }
   )
 }

@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 
-import { fastifyCookie } from '@fastify/cookie'
+// import { fastifyCookie } from '@fastify/cookie'
 import fastifyCors from '@fastify/cors'
 import { fastifyJwt } from '@fastify/jwt'
 import { fastifySwagger } from '@fastify/swagger'
@@ -29,16 +29,16 @@ app.register(fastifyCors, {
 
 app.register(fastifyJwt, {
   secret: env.SECRET,
-  cookie: {
-    cookieName: 'token',
-    signed: false,
-  },
+  // cookie: {
+  //   cookieName: 'token',
+  //   signed: false,
+  // },
   sign: {
     expiresIn: '8h',
   },
 })
 
-app.register(fastifyCookie)
+// app.register(fastifyCookie)
 
 app.register(fastifySwagger, {
   openapi: {
@@ -50,12 +50,17 @@ app.register(fastifySwagger, {
     },
     components: {
       securitySchemes: {
-        CookieAuth: {
+        BearerAuth: {
           type: 'apiKey',
-          in: 'cookie',
-          name: 'token',
-          description: 'JWToken in HTTP-Only cookie',
+          name: 'authorization',
+          in: 'header',
         },
+        // CookieAuth: {
+        //   type: 'apiKey',
+        //   in: 'cookie',
+        //   name: 'token',
+        //   description: 'JWToken in HTTP-Only cookie',
+        // },
       },
     },
   },

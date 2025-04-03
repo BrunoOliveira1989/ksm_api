@@ -5,7 +5,7 @@ import { authenticate } from '../../../hook/auth-hook'
 
 export const getProductSalesHistoryRoute: FastifyPluginAsyncZod = async app => {
   app.get(
-    'products/history/:id',
+    '/products/history/:id',
     {
       schema: {
         summary: 'Get products sales history',
@@ -27,7 +27,7 @@ export const getProductSalesHistoryRoute: FastifyPluginAsyncZod = async app => {
           }),
           204: z.null(),
         },
-        security: [{ CookieAuth: [] }],
+        security: [{ BearerAuth: [] }],
       },
       onRequest: [authenticate],
     },

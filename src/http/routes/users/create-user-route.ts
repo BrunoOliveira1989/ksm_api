@@ -31,7 +31,7 @@ export const createUserRoute: FastifyPluginAsyncZod = async app => {
             message: z.string(),
           }),
         },
-        security: [{ CookieAuth: [] }],
+        security: [{ BearerAuth: [] }],
       },
       onRequest: [authenticate],
     },

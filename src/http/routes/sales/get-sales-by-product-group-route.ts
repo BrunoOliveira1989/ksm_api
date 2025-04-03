@@ -26,7 +26,7 @@ export const getSalesByProductGroupRoute: FastifyPluginAsyncZod = async app => {
           }),
           204: z.null(),
         },
-        security: [{ CookieAuth: [] }],
+        security: [{ BearerAuth: [] }],
       },
       onRequest: [authenticate],
     },

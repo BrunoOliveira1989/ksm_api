@@ -26,7 +26,7 @@ export const getProductByIdRoute: FastifyPluginAsyncZod = async app => {
             message: z.string(),
           }),
         },
-        security: [{ CookieAuth: [] }],
+        security: [{ BearerAuth: [] }],
       },
       onRequest: [authenticate],
     },

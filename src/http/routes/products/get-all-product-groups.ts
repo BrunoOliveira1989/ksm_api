@@ -21,7 +21,7 @@ export const getAllProductGroupsRoute: FastifyPluginAsyncZod = async app => {
             ),
           }),
         },
-        security: [{ CookieAuth: [] }],
+        security: [{ BearerAuth: [] }],
       },
       onRequest: [authenticate],
     },

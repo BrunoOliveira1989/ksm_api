@@ -4,5 +4,5 @@ import { logoutRoute } from './logout-route'
 
 export const authRoutes: FastifyPluginAsyncZod = async app => {
   await app.register(loginRoute)
-  await app.register(logoutRoute)
+  // await app.register(logoutRoute)
 }

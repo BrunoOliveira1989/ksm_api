@@ -21,7 +21,7 @@ export const logoutRoute: FastifyPluginAsyncZod = async app => {
       onRequest: [authenticate],
     },
     async (_, reply) => {
-      reply.clearCookie('token').status(204)
+      // reply.clearCookie('token').status(204)
     }
   )
 }
