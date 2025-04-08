@@ -20,6 +20,7 @@ export const getSalesByProductGroupRoute: FastifyPluginAsyncZod = async app => {
                   groupId: z.number(),
                   groupDescription: z.string(),
                   totalGroupSales: z.number(),
+                  totalValueGroupSales: z.number(),
                 })
               ),
             }),

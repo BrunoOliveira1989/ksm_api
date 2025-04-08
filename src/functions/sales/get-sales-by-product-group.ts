@@ -16,9 +16,13 @@ export const getSalesByProductGroup = async () => {
       .select({
         groupId: products.groupId,
         groupDescription: productGroups.description,
-        totalGroupSales: sql<number>`CAST(count(${sales.id})AS INT)`.as(
+        totalGroupSales: sql<number>`CAST(count(${sales.id}) AS INT)`.as(
           'total_group_sales'
         ),
+        totalValueGroupSales:
+          sql<number>`CAST(sum(${sales.total}) AS FLOAT)`.as(
+            'total_value_group_sales'
+          ),
       })
       .from(sales)
       .innerJoin(products, eq(sales.productId, products.id))
