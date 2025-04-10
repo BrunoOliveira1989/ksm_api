@@ -1,24 +1,26 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { getSalesByDaysOfTheLastWeek } from '../../../functions/sales/get-sales-by-days-of-the-last-week'
+import { getTotalDistinctProductsSoldByDayOfTheLastWeek } from '../../../functions/products/get-total-distinct-products-sold-by-day-of-the-last-week'
 import { authenticate } from '../../../hook/auth-hook'
 
-export const getSalesByDaysOfTheLastWeekRoute: FastifyPluginAsyncZod =
+export const getTotalDistinctProductsSoldByDayOfTheLastWeekRoute: FastifyPluginAsyncZod =
   async app => {
     app.get(
-      '/last/week',
+      'count/last/week',
       {
         schema: {
-          summary: 'Sales count by days of the last last 7 days',
-          operationId: 'getSalesByDaysOfTheLastWeek',
-          tags: ['Sales'],
+          summary:
+            'Get the count of distinct products by day of the last 7 days',
+          operationId: 'getTotalDistinctProductsSoldByDayOfTheLastWeekRoute',
+          tags: ['Products'],
           response: {
             200: z.object({
               salesByDay: z.array(
                 z.object({
                   issueDate: z.string(),
                   dayOfWeek: z.string(),
-                  salesCount: z.number(),
+                  productsCount: z.number(),
+                  productsDistinctCount: z.number(),
                 })
               ),
             }),
@@ -26,10 +28,11 @@ export const getSalesByDaysOfTheLastWeekRoute: FastifyPluginAsyncZod =
           },
           security: [{ BearerAuth: [] }],
         },
-        onResponse: [authenticate],
+        onRequest: [authenticate],
       },
       async (_, reply) => {
-        const { salesByDay } = await getSalesByDaysOfTheLastWeek()
+        const { salesByDay } =
+          await getTotalDistinctProductsSoldByDayOfTheLastWeek()
 
         if (!salesByDay.length) {
           return reply.status(204).send()
