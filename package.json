@@ -9,7 +9,8 @@
     "migrate": "drizzle-kit migrate",
     "seed": "tsx --env-file .env src/db/seed.ts",
     "test": "jest",
-    "build": "tsup-node"
+    "build": "tsup-node",
+    "start": "node --env-file .env ./dist/http/server.mjs"
   },
   "keywords": [],
   "author": "",
