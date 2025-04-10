@@ -2,6 +2,7 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { checkCompanyExists } from '../../../functions/companies/check-company-exists'
 import { createCompany } from '../../../functions/companies/create-company'
+import { authenticate } from '../../../hook/auth-hook'
 
 export const createCompanyRoute: FastifyPluginAsyncZod = async app => {
   app.post(
@@ -33,6 +34,7 @@ export const createCompanyRoute: FastifyPluginAsyncZod = async app => {
         },
         security: [{ BearerAuth: [] }],
       },
+      onRequest: [authenticate],
     },
     async (request, reply) => {
       const {

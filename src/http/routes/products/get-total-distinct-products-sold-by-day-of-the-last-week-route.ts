@@ -6,7 +6,7 @@ import { authenticate } from '../../../hook/auth-hook'
 export const getTotalDistinctProductsSoldByDayOfTheLastWeekRoute: FastifyPluginAsyncZod =
   async app => {
     app.get(
-      'count/last/week',
+      '/count/last/week',
       {
         schema: {
           summary:

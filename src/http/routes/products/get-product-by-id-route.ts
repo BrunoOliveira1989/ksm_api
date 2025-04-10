@@ -22,7 +22,7 @@ export const getProductByIdRoute: FastifyPluginAsyncZod = async app => {
               groupId: z.number(),
             }),
           }),
-          400: z.object({
+          404: z.object({
             message: z.string(),
           }),
         },

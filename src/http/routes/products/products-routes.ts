@@ -1,5 +1,5 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
-import { getAllProductGroupsRoute } from './get-all-product-groups'
+import { getAllProductGroupsRoute } from './get-all-product-groups-route'
 import { getAllProductsRoute } from './get-all-products-route'
 import { getProductByIdRoute } from './get-product-by-id-route'
 import { getTopSellingProductsRoute } from './get-top-selling-products-route'
