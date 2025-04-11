@@ -1,5 +1,5 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
-import z from 'zod'
+import { z } from 'zod'
 import { getLastTenSales } from '../../../functions/sales/get-last-ten-sales'
 import { authenticate } from '../../../hook/auth-hook'
 
