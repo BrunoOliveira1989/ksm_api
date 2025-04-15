@@ -14,6 +14,7 @@ export const getAllProductsRoute: FastifyPluginAsyncZod = async app => {
         querystring: z.object({
           groupId: z.coerce.number().optional(),
           page: z.coerce.number().default(1),
+          search: z.string().optional(),
         }),
         response: {
           200: z.object({
@@ -21,7 +22,6 @@ export const getAllProductsRoute: FastifyPluginAsyncZod = async app => {
               z.object({
                 id: z.string(),
                 description: z.string(),
-                unitValue: z.number(),
               })
             ),
           }),
@@ -32,9 +32,9 @@ export const getAllProductsRoute: FastifyPluginAsyncZod = async app => {
       onRequest: [authenticate],
     },
     async (request, reply) => {
-      const { groupId, page } = request.query
+      const { groupId, page, search } = request.query
 
-      const { products } = await getAllProducts({ groupId, page })
+      const { products } = await getAllProducts({ groupId, page, search })
 
       if (!products.length) {
         return reply.status(204).send()
