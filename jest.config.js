@@ -6,4 +6,5 @@ module.exports = {
   },
   setupFiles: ['./jest.setup.js'],
   verbose: true,
+  testResultsProcessor: './custom-reporter.js'
 }

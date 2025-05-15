@@ -186,12 +186,10 @@ describe('Get all products route', () => {
       {
         id: 'Id-1',
         description: 'Produto 1',
-        unitValue: 15,
       },
       {
         id: 'Id-2',
         description: 'Produto 2',
-        unitValue: 25,
       },
     ]
     ;(mockedGetAllProducts as jest.Mock).mockResolvedValueOnce({
@@ -219,12 +217,10 @@ describe('Get all products route', () => {
       {
         id: 'Id-1',
         description: 'Produto 1',
-        unitValue: 15,
       },
       {
         id: 'Id-2',
         description: 'Produto 2',
-        unitValue: 25,
       },
     ]
     ;(mockedGetAllProducts as jest.Mock).mockResolvedValueOnce({
@@ -252,12 +248,10 @@ describe('Get all products route', () => {
       {
         id: 'Id-1',
         description: 'Produto 1',
-        unitValue: 15,
       },
       {
         id: 'Id-2',
         description: 'Produto 2',
-        unitValue: 25,
       },
     ]
     ;(mockedGetAllProducts as jest.Mock).mockResolvedValueOnce({
@@ -285,12 +279,10 @@ describe('Get all products route', () => {
       {
         id: 'Id-1',
         description: 'Produto 1',
-        unitValue: 15,
       },
       {
         id: 'Id-2',
         description: 'Produto 2',
-        unitValue: 25,
       },
     ]
     ;(mockedGetAllProducts as jest.Mock).mockResolvedValueOnce({
