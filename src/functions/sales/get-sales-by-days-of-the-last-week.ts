@@ -12,9 +12,7 @@ export const getSalesByDaysOfTheLastWeek = async () => {
 
   if (!maxIssueDate) return { salesByDay: [] }
 
-  const sevenDaysAgo = dayjs(maxIssueDate)
-    .subtract(7, 'days')
-    .format('YYYY-MM-DD')
+  const sevenDaysAgo = dayjs(maxIssueDate).subtract(7, 'days').toDate()
 
   const salesByDay = await db
     .select({

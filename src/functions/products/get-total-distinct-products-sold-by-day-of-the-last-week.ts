@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
-import { asc, count, eq, gte, max, sql, sum } from 'drizzle-orm'
+import { asc, count, gte, max, sql } from 'drizzle-orm'
 import { db } from '../../db/client'
-import { products, sales } from '../../db/schema'
+import { sales } from '../../db/schema'
 
 export const getTotalDistinctProductsSoldByDayOfTheLastWeek = async () => {
   const [{ maxIssueDate }] = await db
@@ -12,9 +12,7 @@ export const getTotalDistinctProductsSoldByDayOfTheLastWeek = async () => {
 
   if (!maxIssueDate) return { salesByDay: [] }
 
-  const sevenDaysAgo = dayjs(maxIssueDate)
-    .subtract(7, 'days')
-    .format('YYYY-MM-DD')
+  const sevenDaysAgo = dayjs(maxIssueDate).subtract(7, 'days').toDate()
 
   const salesByDay = await db
     .select({

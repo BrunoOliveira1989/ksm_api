@@ -1,10 +1,10 @@
 import { relations } from 'drizzle-orm'
-import { date, decimal, integer, pgTable, text } from 'drizzle-orm/pg-core'
+import { decimal, integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { customers, products, types } from '.'
 
 export const sales = pgTable('sales', {
   id: integer('id').primaryKey(),
-  issueDate: date('issue_date').notNull(),
+  issueDate: timestamp('issue_date').notNull(),
   typeId: integer('type_id')
     .notNull()
     .references(() => types.id),

@@ -17,7 +17,7 @@ export const getTotalDistinctProductsSoldByDayOfTheLastWeekRoute: FastifyPluginA
             200: z.object({
               salesByDay: z.array(
                 z.object({
-                  issueDate: z.string(),
+                  issueDate: z.date(),
                   dayOfWeek: z.string(),
                   productsCount: z.number(),
                   productsDistinctCount: z.number(),

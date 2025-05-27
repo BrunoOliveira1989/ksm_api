@@ -16,7 +16,7 @@ export const getSalesByDaysOfTheLastWeekRoute: FastifyPluginAsyncZod =
             200: z.object({
               salesByDay: z.array(
                 z.object({
-                  issueDate: z.string(),
+                  issueDate: z.date(),
                   dayOfWeek: z.string(),
                   salesCount: z.number(),
                 })

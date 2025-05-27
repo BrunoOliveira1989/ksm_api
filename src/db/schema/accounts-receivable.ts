@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm'
-import { date, decimal, integer, pgTable, text } from 'drizzle-orm/pg-core'
+import { decimal, integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { customers } from '.'
 
 export const accountsReceivable = pgTable('accounts_receivable', {
@@ -13,9 +13,9 @@ export const accountsReceivable = pgTable('accounts_receivable', {
   titleValue: decimal('title_value').notNull(),
   receivedValue: decimal('received_value').notNull(),
   balanceValue: decimal('balance_value').notNull(),
-  issueDate: date('issue_date').notNull(),
-  entryDate: date('entry_date').notNull(),
-  dueDate: date('due_date').notNull(),
+  issueDate: timestamp('issue_date').notNull(),
+  entryDate: timestamp('entry_date').notNull(),
+  dueDate: timestamp('due_date').notNull(),
 })
 
 export const accountsReceivableRelations = relations(

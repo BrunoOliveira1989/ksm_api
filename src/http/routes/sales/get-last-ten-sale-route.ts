@@ -16,7 +16,7 @@ export const getLastTenSalesRoute: FastifyPluginAsyncZod = async app => {
             lastSales: z.array(
               z.object({
                 id: z.number(),
-                issueDate: z.string(),
+                issueDate: z.date(),
                 quantity: z.string(),
                 total: z.string(),
                 companyName: z.string(),

@@ -120,6 +120,13 @@
       "when": 1743442331914,
       "tag": "0016_classy_vector",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1747867452614,
+      "tag": "0017_chunky_jackal",
+      "breakpoints": true
     }
   ]
 }
