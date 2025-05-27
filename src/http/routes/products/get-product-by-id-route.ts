@@ -84,7 +84,7 @@ export const getProductByIdRoute: FastifyPluginAsyncZod = async app => {
         const end = dayjs(
           priceVariation[priceVariation.length - 1].issueDate
         ).startOf('month')
-        let current = start.clone()
+        let current = start
 
         while (current.isAfter(end) || current.isSame(end)) {
           monthsRange.push(current.format('MMM'))
@@ -121,7 +121,7 @@ export const getProductByIdRoute: FastifyPluginAsyncZod = async app => {
         product: {
           ...rest,
           groupDescription: group.description,
-          priceVariation: variations,
+          priceVariation: variations.reverse(),
           mainBuyers,
         },
       }

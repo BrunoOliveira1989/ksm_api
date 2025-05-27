@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { and, asc, count, eq, gte, like, lte, sql } from 'drizzle-orm'
+import { and, asc, count, desc, eq, gte, like, lte, sql } from 'drizzle-orm'
 import { db } from '../../db/client'
 import { customers, sales } from '../../db/schema'
 
@@ -60,7 +60,7 @@ export const getProductById = async ({ id }: GetProductById) => {
         lte(sales.issueDate, endsMonth)
       )
     )
-    .orderBy(asc(sales.issueDate))
+    .orderBy(desc(sales.issueDate))
 
   const mainBuyers = await db
     .select({

@@ -4,4 +4,4 @@ import { env } from '../env'
 import * as schema from './schema'
 
 const pg = postgres(env.DATABASE_URL)
-export const db = drizzle(pg, { schema, logger: true })
+export const db = drizzle(pg, { schema, logger: false })
