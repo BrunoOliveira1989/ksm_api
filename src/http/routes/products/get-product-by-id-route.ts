@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import 'dayjs/locale/pt-br'
+import 'dayjs/locale/pt-br.js'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { getProductById } from '../../../functions/products/get-product-by-id'

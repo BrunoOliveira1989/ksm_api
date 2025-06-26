@@ -31,7 +31,7 @@ COPY package.json ./
 
 COPY .env .env
 
-RUN npm install --production
+RUN npm install --omit=dev
 
 USER node
 
